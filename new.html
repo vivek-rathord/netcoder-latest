@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milestone Curriculum UI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        .milestone-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .milestone-header h2 { font-weight: 700; }
+        .duration-text { color: #ff4d4d; }
+        
+        .feature-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .summary-text { color: #666; font-size: 0.95rem; line-height: 1.6; }
+
+        .toggle-btn {
+            background: #e9ecef;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+             display: block;
+    margin-left: auto;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .week-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            height: 100%;
+        }
+
+        .week-label {
+            float: right;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 2px 12px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .week-label span { color: #ff4d4d; }
+        
+        .card-title { font-weight: 800; font-size: 1.5rem; margin-top: 20px; }
+        .highlight-orange { color: #ff4d4d; }
+
+        .course-list { list-style: none; padding-left: 0; margin-top: 20px; }
+        .course-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 0.95rem;
+        }
+        .course-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="milestone-container">
+        <div class="milestone-header">
+            <h2>Milestone 1 - Duration: <span class="duration-text">2 weeks</span></h2>
+            
+            <div class="feature-bar mt-3">
+                <span>Digital Marketing, Websites & Landing Pages</span>
+                <span class="text-muted">• 6 Live Sessions</span>
+                <span class="text-muted">• 2 Projects</span>
+                <span class="text-muted">• 2 Case Studies</span>
+                <span class="text-muted">• 2 Cheat sheets</span>
+                <span class="text-muted">• 2 Quizzes</span>
+            </div>
+
+            <p class="summary-text">
+                This milestone builds the foundation of digital marketing by covering core concepts such as audience research, consumer behavior, branding, and funnel thinking. Learners will also create professional websites and conversion-focused landing pages using WordPress, aligning digital assets with real business and marketing objectives.
+            </p>
+
+            <button class="toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#weekContent" aria-expanded="false">
+                <i class="bi bi-arrow-down-short fs-4"></i>
+            </button>
+        </div>
+
+        <div class="collapse mt-4" id="weekContent">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="week-card">
+                        <div class="week-label">Week <span>1</span></div>
+                        <h3 class="card-title">Digital Marketing Foundation & <span class="highlight-orange">AI Mindset</span></h3>
+                        <ul class="course-list">
+                            <li>Digital marketing ecosystem & growth levers</li>
+                            <li>Brand, performance & growth marketing models</li>
+                            <li>Business models - D2C, B2B, EdTech, Local, SaaS, etc</li>
+                            <li>Customer journey & funnel frameworks (TOFU-MOFU-BOFU)</li>
+                            <li>Consumer behavior & buying triggers</li>
+                            <li>ICPs, personas & audience research with AI</li>
+                            <li>Market & competitor analysis using AI tools</li>
+                            <li>Brand positioning, channels & KPI frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="week-card">
+                        <div class="week-label">Week <span>2</span></div>
+                        <h3 class="card-title">Website & Landing <span class="highlight-orange">Page Design</span></h3>
+                        <ul class="course-list">
+                            <li>Website fundamentals & digital marketing role</li>
+                            <li>Business websites vs marketing websites</li>
+                            <li>WordPress basics & dashboard navigation</li>
+                            <li>Domain, hosting & website environment setup</li>
+                            <li>Website structure & page hierarchy</li>
+                            <li>WordPress configuration & theme customization</li>
+                            <li>Pages, posts, menus & content management</li>
+                            <li>Conversion-focused landing pages</li>
+                            <li>User intent, buyer psychology & messaging</li>
+                            <li>Headlines, CTAs, forms & trust elements</li>
+                            <li>AI-assisted landing page ideation</li>
+                            <li>No-code landing page design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- project -->
+     
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

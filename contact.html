@@ -1,0 +1,561 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="Contact Netcoder Technology, IT training inquiries, IT courses information, Dharamshala training institute, student support, enroll in IT courses, ask about internships, technology training questions, connect with Netcoder Technology, customer service IT education">
+    <meta name="description"
+        content="Get in touch with Netcoder Technology for any inquiries about our IT training programs, courses, and internships. We're here to assist you in your educational journey in Dharamshala.">
+    <title>Contact Us | Netcoder Technology - Reach Out for IT Training Inquiries</title>
+    <link rel="canonical" href="https://www.netcoder.in/contact/" />
+    <link rel="shortcut icon" href="images/net-coder-logo icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-data">
+                <a href="index.html" class="nav-logo"> 
+                    <img src="images/logo.png" alt="Netcoder Technology Logo">
+                </a>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <svg class="nav-toggle-menu" width="100%" height="100%" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12H21M3 6H21M9 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <!--  -->
+                    <svg class="nav-toggle-close" width="100%" height="100%" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- NAV MENU -->
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list container">
+                    <li>
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <div class="nav-link dropdown-button">
+                            Courses <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5 5.39565C4.88131 5.39565 4.78239 5.35608 4.68348 5.27695L0.133531 0.806133C-0.0445104 0.628091 -0.0445104 0.351138 0.133531 0.173096C0.311573 -0.00494545 0.588526 -0.00494545 0.766568 0.173096L5 4.30762L9.23343 0.133531C9.41147 -0.0445104 9.68843 -0.0445104 9.86647 0.133531C10.0445 0.311573 10.0445 0.588526 9.86647 0.766568L5.31652 5.23739C5.21761 5.3363 5.11869 5.39565 5 5.39565Z"
+                                    fill="#222222" />
+                            </svg>
+                        </div>
+                        <div class="dropdown-container container">
+                            <div class="dropdown-content">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <h5>Design & Multimedia Courses</h5>
+                                        </li>
+                                        <li><a href="foundation-graphic.html">Graphic Designing</a></li>
+                                        <li><a href="web-designing.html">Web Designing</a></li>
+                                        <li><a href="ui&ux.html">UI & UX Design</a></li>
+                                        <li><a href="animation.html">2D/3D Animation</a></li>
+                                        <li><a href="motion-graphics.html">Motion Graphics</a></li>
+                                        <li><a href="graphic-and-web-designing.html">Graphics & Web Designing</a></li>
+                                        <li><a href="digital-content-creator.html">Digital Content Creator</a></li>
+                                        <li><a href="autocad.html">Auto CAD</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <h5>CMS & Web Technologies Courses</h5>
+                                        </li>
+                                        <li><a href="web-development.html">Web Development</a></li>
+                                        <li><a href="fullstack-web-development.html">Full Stack Development</a></li>
+                                        <li><a href="mern-stack.html">MERN Stack</a></li>
+                                        <li><a href="mean-stack.html">MEAN Stack</a></li>
+                                        <li><a href="php-training.html">PHP Training</a></li>
+                                        <li><a href="wordpress.html">Wordpress</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <h5>Digital Marketing Courses</h5>
+                                        </li>
+                                        <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                                        <li><a href="social-media-marketing.html">Social Media Marketing</a></li>
+                                        <li><a href="seo-course.html">SEO Course</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <h5>Professional Training Courses</h5>
+                                        </li>
+                                        <li><a href="business-analytics.html">Data Science & Business Analytics</a></li>
+                                        <li><a href="machine-learning.html">Data Science & Machine Learning</a></li>
+                                        <li><a href="cyber-security.html">Complete Cyber Security Course</a></li>
+                                        <li><a href="ethical-hacking.html">Ethical Hacking</a></li>
+                                        <li><a href="software-engineering.html">Software engineering with Python</a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <h5>Additional Courses</h5>
+                                        </li>
+                                        <li><a href="system-design.html">System Design & Operating Systems</a></li>
+                                        <li><a href="data-structures.html">Algorithm & Data Structures in Python</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="services.html" class="nav-link">Services</a>
+                    </li>
+                    <li>
+                        <a href="gallery.html" class="nav-link">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="blog.php" class="nav-link">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="career.html" class="nav-link">Career</a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="page-title">
+            <div>Contact</div>
+            <p>HOME / <b>Contact</b></p>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <div class="contact container">
+        <div class="contact-info">
+            <div class="info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="4" fill="#ff5532" />
+                    <path
+                        d="M18 11C18 15.6667 12 19.6667 12 19.6667C12 19.6667 6 15.6667 6 11C6 9.4087 6.63214 7.88258 7.75736 6.75736C8.88258 5.63214 10.4087 5 12 5C13.5913 5 15.1174 5.63214 16.2426 6.75736C17.3679 7.88258 18 9.4087 18 11Z"
+                        fill="#ff5532" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13Z"
+                        fill="#ff5532" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div class="office">
+                    <h5>Office</h5>
+                    <div>
+                        <p>Dharamshala Branch Office</p>
+                        <small>
+                            1st Floor, above Gramin Bank, near Govt. ITI,
+                            Dari<br>Dharamshala (176057)
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="4" fill="#ff5532" />
+                    <path
+                        d="M17.9996 14.9843V16.7908C18.0003 16.9585 17.9659 17.1245 17.8986 17.2781C17.8313 17.4318 17.7325 17.5697 17.6087 17.6831C17.4849 17.7965 17.3387 17.8828 17.1795 17.9365C17.0203 17.9903 16.8517 18.0102 16.6843 17.9951C14.8277 17.7938 13.0443 17.1606 11.4773 16.1465C10.0195 15.222 8.78356 13.9884 7.8572 12.5335C6.83752 10.9626 6.20294 9.17405 6.0049 7.31277C5.98982 7.14625 6.00965 6.97843 6.06312 6.81998C6.11659 6.66153 6.20254 6.51592 6.31548 6.39244C6.42843 6.26896 6.5659 6.1703 6.71915 6.10274C6.87239 6.03519 7.03805 6.00022 7.20558 6.00006H9.01565C9.30846 5.99718 9.59233 6.10067 9.81435 6.29122C10.0364 6.48178 10.1814 6.74641 10.2224 7.03578C10.2988 7.61389 10.4404 8.18152 10.6447 8.72785C10.7259 8.94338 10.7435 9.17761 10.6953 9.4028C10.6472 9.62799 10.5354 9.83469 10.3732 9.99841L9.60694 10.7632C10.4658 12.2707 11.7165 13.5189 13.2271 14.3761L13.9933 13.6114C14.1574 13.4495 14.3645 13.3379 14.5901 13.2899C14.8158 13.2419 15.0505 13.2594 15.2664 13.3404C15.8138 13.5443 16.3826 13.6857 16.9619 13.7619C17.2549 13.8032 17.5226 13.9505 17.714 14.1759C17.9053 14.4013 18.007 14.689 17.9996 14.9843Z"
+                        fill="#ff5532" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div>
+                    <h5>Phone</h5>
+                    <small>Mon to Sat 10 am to 5 pm</small>
+                    <p>+91 9816732055, 7590832055</p>
+                </div>
+            </div>
+            <div class="info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="4" fill="#ff5532" />
+                    <path
+                        d="M18 14C18 14.3536 17.8595 14.6928 17.6095 14.9428C17.3594 15.1929 17.0203 15.3333 16.6667 15.3333H8.6667L6 18V7.33333C6 6.97971 6.14048 6.64057 6.39052 6.39052C6.64057 6.14048 6.97971 6 7.33333 6H16.6667C17.0203 6 17.3594 6.14048 17.6095 6.39052C17.8595 6.64057 18 6.97971 18 7.33333V14Z"
+                        fill="#ff5532" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div>
+                    <h5>Chat to us</h5>
+                    <small>Send us your query anytime!</small>
+                    <p>info@netcoder.in</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+            <div class="form-slides">
+                <!-- Slide 1: Course Selection -->
+                <div class="form-slide active" id="slide1">
+
+                    <br>
+                    <h3 class="slide-title">What are you interested in?</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">Select Your Type</label>
+                        <select class="form-select" id="educationType">
+                            <option value="">Choose an option</option>
+                            <option value="regular">Regular Courses</option>
+                            <option value="industrial">Industrial Training</option>
+                            <option value="services">Our Services</option>
+                        </select>
+                        <div class="error-message" id="educationTypeError"></div>
+                    </div>
+
+                    <!-- Regular Courses Section -->
+                    <div class="form-group" id="regularCoursesSection" style="display: none;">
+                        <label class="form-label">Select Course</label>
+                        <select class="form-select" id="courseSelect">
+                            <option value="">Select a course</option>
+                            <optgroup label="Design & Multimedia Courses">
+                                <option value="Graphic Designing">Graphic Designing</option>
+                                <option value="Web Designing">Web Designing</option>
+                                <option value="UI & UX Design">UI & UX Design</option>
+                                <option value="2D/3D Animation">2D/3D Animation</option>
+                                <option value="Motion Graphics">Motion Graphics</option>
+                                <option value="Graphics & Web Designing">Graphics & Web Designing</option>
+                                <option value="Digital Content Creator">Digital Content Creator</option>
+                                <option value="Auto CAD">Auto CAD</option>
+                            </optgroup>
+                            <optgroup label="CMS & Web Technologies">
+                                <option value="Web Development">Web Development</option>
+                                <option value="Full Stack Development">Full Stack Development</option>
+                                <option value="MERN Stack">MERN Stack</option>
+                                <option value="MEAN Stack">MEAN Stack</option>
+                                <option value="PHP Training">PHP Training</option>
+                                <option value="Wordpress">Wordpress</option>
+                            </optgroup>
+                            <optgroup label="Digital Marketing">
+                                <option value="Digital Marketing">Digital Marketing</option>
+                                <option value="Social Media Marketing">Social Media Marketing</option>
+                                <option value="SEO Course">SEO Course</option>
+                            </optgroup>
+                            <optgroup label="Professional Training">
+                                <option value="Data Science & Business Analytics">Data Science & Business Analytics
+                                </option>
+                                <option value="Data Science & Machine Learning">Data Science & Machine Learning</option>
+                                <option value="Complete Cyber Security">Complete Cyber Security</option>
+                                <option value="Ethical Hacking">Ethical Hacking</option>
+                                <option value="Software Engineering with Python">Software Engineering with Python
+                                </option>
+                            </optgroup>
+                            <optgroup label="Additional Courses">
+                                <option value="System Design & Operating Systems">System Design & Operating Systems
+                                </option>
+                                <option value="Algorithm & Data Structures in Python">Algorithm & Data Structures in
+                                    Python</option>
+                            </optgroup>
+                        </select>
+                        <div class="error-message" id="courseSelectError"></div>
+                    </div>
+
+                    <!-- Industrial Training Section -->
+                    <div class="form-group" id="industrialSection" style="display: none;">
+                        <label class="form-label">Training Type</label>
+                        <select class="form-select" id="trainingType">
+                            <option value="">Select training type</option>
+                            <option value="Summer Training">Summer Training</option>
+                            <option value="Winter Training">Winter Training</option>
+                            <option value="Internship Program">Internship Program</option>
+                            <option value="Project Based Training">Project Based Training</option>
+                            <option value="Corporate Training">Corporate Training</option>
+                        </select>
+                        <div class="error-message" id="trainingTypeError"></div>
+
+                        <label class="form-label" style="margin-top: 15px;">Select Technology</label>
+                        <select class="form-select" id="trainingTech">
+                            <option value="">Select technology</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="Python Programming">Python Programming</option>
+                            <option value="Java Programming">Java Programming</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Cyber Security">Cyber Security</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                        </select>
+                        <div class="error-message" id="trainingTechError"></div>
+                    </div>
+
+                    <!-- Services Section -->
+                    <div class="form-group" id="servicesSection" style="display: none;">
+                        <label class="form-label">Select Service</label>
+                        <div class="service-options">
+                            <div class="service-option">
+                                <button type="button" class="service-btn" data-service="web-development">
+                                    Web Development
+                                </button>
+                            </div>
+                            <div class="service-option">
+                                <button type="button" class="service-btn" data-service="graphic-design">
+                                    Graphic Design
+                                </button>
+                            </div>
+                            <div class="service-option">
+                                <button type="button" class="service-btn" data-service="digital-marketing">
+                                    Digital Marketing
+                                </button>
+                            </div>
+                        </div>
+                        <div class="error-message" id="serviceError"></div>
+                    </div>
+
+                    <div class="progress-indicators">
+                        <span class="indicator active"></span>
+                        <span class="indicator"></span>
+                        <span class="indicator"></span>
+                        <span class="indicator"></span>
+                    </div>
+
+                   <button type="button" class="form-btn continue-btn-form" onclick="validateSlide1()">Continue</button>
+                </div>
+
+                <!-- Slide 2: Personal Information -->
+                <div class="form-slide" id="slide2">
+                    <h3 class="slide-title">Tell us about yourself</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" class="form-input" id="fullName" placeholder="Enter your full name">
+                        <div class="error-message" id="fullNameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mobile Number *</label>
+                        <input type="tel" class="form-input" id="mobileNumber"
+                            placeholder="Enter 10-digit mobile number" maxlength="10">
+                        <div class="error-message" id="mobileNumberError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" class="form-input" id="emailAddress" placeholder="Enter your email address">
+                        <div class="error-message" id="emailAddressError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-input" id="address" placeholder="Enter your address">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Message (Optional)</label>
+                        <textarea class="form-input" id="message" rows="3"
+                            placeholder="Any additional information..."></textarea>
+                    </div>
+
+                    <div class="progress-indicators">
+                        <span class="indicator"></span>
+                        <span class="indicator active"></span>
+                        <span class="indicator"></span>
+                        <span class="indicator"></span>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button class="form-btn btn-secondary" onclick="goToSlide(1)">Back</button>
+                        <button type="button" class="form-btn submit-btn-form" onclick="validateSlide2()">Continue</button>
+
+                    </div>
+                </div>
+
+                <!-- Slide 3: OTP Verification -->
+                <div class="form-slide" id="slide3">
+                    <div class="otp-container">
+                        <h3 class="slide-title">Verify Mobile Number</h3>
+
+                        <div class="otp-inputs">
+                            <input type="text" class="otp-input" maxlength="1" data-index="0" disabled>
+                            <input type="text" class="otp-input" maxlength="1" data-index="1" disabled>
+                            <input type="text" class="otp-input" maxlength="1" data-index="2" disabled>
+                            <input type="text" class="otp-input" maxlength="1" data-index="3" disabled>
+                            <input type="text" class="otp-input" maxlength="1" data-index="4" disabled>
+                            <input type="text" class="otp-input" maxlength="1" data-index="5" disabled>
+                        </div>
+
+                        <div class="error-message" id="otpError"></div>
+
+                        <div id="recaptcha-container"></div>
+
+                        <button type="button" class="form-btn otp-btn" onclick="sendOTP()">Send OTP</button>
+
+                        <button type="button" class="form-btn otp-btn-verify" onclick="verifyOTP()" style="width: 100%;">Verify Otp </button>
+
+
+
+                        <p style="margin-top: 20px; color: #666;">
+                            Enter the 6-digit OTP sent to your mobile number
+                        </p>
+
+                        <div class="progress-indicators">
+                            <span class="indicator"></span>
+                            <span class="indicator"></span>
+                            <span class="indicator active"></span>
+                            <span class="indicator"></span>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button class="form-btn btn-secondary" onclick="goToSlide(2)">Back</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Success Message -->
+                <div class="form-slide" id="slide4">
+                    <div class="success-message">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="40" fill="#27ae60" fill-opacity="0.1" />
+                            <path d="M30 40L37.5 47.5L50 32.5" stroke="#27ae60" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <h4>Congratulations!</h4>
+                        <p>Your details have been submitted successfully.</p>
+                        <p>Our team will contact you within 24 hours.</p>
+                        <p style="margin-top: 20px;">
+                            Redirecting to homepage in <span class="countdown">5</span> seconds...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="newsletter">
+                <h2><span>Keep Up With Our Latest Updates</span></h2>
+                <p>Stay connected with our latest news and updates. Be the first to know about new courses, exclusive
+                    offers, and exciting announcements by subscribing to our newsletter.</p>
+                <form id="newsletterForm">
+                    <input type="email" name="newsletter" id="newsletterEmail" placeholder="Email Address" required>
+                    <input type="submit" value="Subscribe">
+                </form>
+            </div>
+
+            <div class="foot-links">
+                <ul>
+                    <li>
+                        <h5>Quick Links</h5>
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy-policy.html">Privacy & Policy</a></li>
+                </ul>
+
+                <ul>
+                    <li>
+                        <h5>Top Courses</h5>
+                    </li>
+                    <li><a href="fullstack-web-development.html">Full Stack Development</a></li>
+                    <li><a href="graphic-and-web-designing.html">Graphics & Web Designing</a></li>
+                    <li><a href="mern-stack.html">MERN Stack</a></li>
+                    <li><a href="mean-stack.html">MEAN Stack</a></li>
+                    <li><a href="software-engineering.html">Python Course</a></li>
+                </ul>
+
+                <ul>
+                    <li>
+                        <h5>Features</h5>
+                    </li>
+                    <li><a href="foundation-graphic.html">Graphic Designing</a></li>
+                    <li><a href="animation.html">Animation</a></li>
+                    <li><a href="ui&ux.html">UI & UX Design</a></li>
+                    <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                    <li><a href="digital-content-creator.html">Content Creation</a></li>
+                </ul>
+
+                <ul>
+                    <li>
+                        <h5>Professional Training</h5>
+                    </li>
+                    <li><a href="machine-learning.html">Data Science & Machine Learning</a></li>
+                    <li><a href="business-analytics.html">Data Science & Business Analytics</a></li>
+                    <li><a href="system-design.html">System Design & Operating System</a></li>
+                    <li><a href="cyber-security.html">Cyber Security</a></li>
+                    <li><a href="ethical-hacking.html">Ethical Hacking</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <p>Copyright &copy;2025 All rights reserved by &hearts; <a href="index.html">Netcoder Technology</a></p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/netcodertechnology/">
+                        <svg width="20" height="20" viewBox="0 0 64 64">
+                            <path
+                                d="M36.2008 63.8002H28.4008C26.4008 63.8002 24.8008 62.1002 24.8008 60.0002V36.2002H18.4008C16.4008 36.2002 14.8008 34.5002 14.8008 32.4002V25.5002C14.8008 23.4002 16.4008 21.7002 18.4008 21.7002H24.6008V15.4002C24.6008 6.30019 30.0008 0.200195 38.0008 0.200195H44.0008C46.0008 0.200195 47.6008 1.9002 47.6008 4.0002V12.1002C47.6008 14.2002 46.0008 15.9002 44.0008 15.9002H39.9008C39.8008 15.9002 39.8008 15.9002 39.7008 15.9002C39.7008 16.0002 39.7008 16.1002 39.7008 16.2002V21.6002H45.4008C46.6008 21.7002 47.6008 22.2002 48.3008 23.0002C49.0008 23.9002 49.3008 25.1002 49.1008 26.2002L47.9008 33.0002C47.7008 34.8002 46.2008 36.1002 44.3008 36.1002H39.7008V60.0002C39.7008 62.0002 38.1008 63.8002 36.2008 63.8002ZM26.5008 32.7002C27.5008 32.7002 28.3008 33.5002 28.3008 34.5002V60.0002C28.3008 60.2002 28.4008 60.3002 28.4008 60.3002H36.2008C36.2008 60.3002 36.3008 60.2002 36.3008 60.0002V34.3002C36.3008 33.3002 37.1008 32.5002 38.1008 32.5002H44.4008C44.4008 32.5002 44.5008 32.5002 44.5008 32.4002V32.3002L45.7008 25.6002C45.7008 25.4002 45.7008 25.3002 45.6008 25.2002C45.6008 25.2002 45.5008 25.1002 45.4008 25.1002H38.0008C37.0008 25.1002 36.2008 24.3002 36.2008 23.3002V16.2002C36.2008 14.4002 36.5008 12.4002 39.9008 12.4002H44.0008C44.0008 12.4002 44.1008 12.3002 44.1008 12.1002V4.1002C44.1008 3.9002 44.0008 3.8002 44.0008 3.8002H38.1008C32.1008 3.8002 28.2008 8.4002 28.2008 15.5002V23.6002C28.2008 24.6002 27.4008 25.4002 26.4008 25.4002H18.4008C18.4008 25.4002 18.3008 25.5002 18.3008 25.7002V32.6002C18.3008 32.8002 18.4008 32.9002 18.4008 32.9002L26.5008 32.7002Z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/netcodertechnology/">
+                        <svg width="20" height="20" viewBox="0 0 64 64">
+                            <path
+                                d="M32.0016 17.5996C24.1016 17.5996 17.6016 23.9996 17.6016 31.9996C17.6016 39.8996 24.0016 46.3996 32.0016 46.3996C39.9016 46.3996 46.3016 39.9996 46.3016 31.9996C46.3016 24.0996 39.9016 17.5996 32.0016 17.5996ZM32.0016 41.8996C26.6016 41.8996 22.1016 37.4996 22.1016 31.9996C22.1016 26.5996 26.5016 22.0996 32.0016 22.0996C37.4016 22.0996 41.8016 26.4996 41.8016 31.9996C41.8016 37.3996 37.4016 41.8996 32.0016 41.8996Z" />
+                            <path
+                                d="M47 11.5996C45 11.5996 43.5 13.1996 43.5 15.0996C43.5 16.9996 45.1 18.5996 47 18.5996C48.9 18.5996 50.5 16.9996 50.5 15.0996C50.5 13.1996 49 11.5996 47 11.5996Z" />
+                            <path
+                                d="M46.9008 1.7998H17.1008C8.60078 1.7998 1.80078 8.5998 1.80078 17.0998V46.9998C1.80078 55.3998 8.70078 62.2998 17.1008 62.2998H47.0008C55.4008 62.2998 62.3008 55.3998 62.3008 46.9998V17.0998C62.3008 8.5998 55.4008 1.7998 46.9008 1.7998ZM57.8008 46.8998C57.8008 52.8998 53.0008 57.6998 47.0008 57.6998H17.1008C11.1008 57.6998 6.30078 52.8998 6.30078 46.8998V17.0998C6.30078 11.0998 11.2008 6.2998 17.1008 6.2998H46.9008C52.9008 6.2998 57.7008 11.1998 57.7008 17.0998V46.8998H57.8008Z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@netcodertechnology">
+                        <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+                            <path
+                                d="M1 8.14286C1 6.73619 1.06762 5.40952 1.15619 4.29714C1.28952 2.61714 2.62095 1.32571 4.3019 1.20857C5.91714 1.09524 8.12381 1 11 1C13.8762 1 16.0829 1.09524 17.6981 1.20857C19.379 1.32571 20.7105 2.6181 20.8438 4.29714C20.9324 5.41048 21 6.73524 21 8.14286C21 9.6 20.9276 10.9705 20.8343 12.1076C20.7772 12.8843 20.4401 13.6139 19.8854 14.1606C19.3308 14.7074 18.5965 15.0341 17.819 15.08C16.1876 15.1914 13.9048 15.2857 11 15.2857C8.09524 15.2857 5.81238 15.1914 4.18095 15.08C3.40351 15.0341 2.66919 14.7074 2.11457 14.1606C1.55994 13.6139 1.22276 12.8843 1.16571 12.1076C1.05716 10.7888 1.00188 9.46614 1 8.14286Z"
+                                stroke-linejoin="round" />
+                            <path d="M9.0957 10.9994V5.28516L14.3338 8.1423L9.0957 10.9994Z" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toastContainer"></div>
+    <!-- Include your existing scripts -->
+    <!-- <script   src="main.js"></script> -->
+    <script src="new.js"></script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>
+
+<!--  the javascript in new.js files  -->

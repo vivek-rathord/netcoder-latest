@@ -1,0 +1,502 @@
+ <?php
+// blog.php
+require_once 'config.php';
+
+// Fetch all blogs ordered by latest first
+$sql = "SELECT * FROM blogs ORDER BY date_posted DESC";
+$result = $conn->query($sql);
+$blogs = [];
+
+if ($result) {
+    $blogs = $result->fetch_all(MYSQLI_ASSOC);
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Netcoder Technology blog, IT training insights, technology trends, programming tutorials, ethical hacking tips, digital marketing strategies, data science resources, web development articles, graphic design tips, career advice in IT, industry news, student success stories, online learning resources, technology skills development, internship guidance">
+    <meta name="description" content="Explore the Netcoder Technology blog for expert insights on IT training, industry trends, and helpful tips. Discover resources on programming, ethical hacking, digital marketing, and more to enhance your tech skills and career.">
+    <title>Netcoder Technology Blog | Insights on IT Training, Trends, and Tips</title>
+    <link rel="canonical" href="https://www.netcoder.in/blog/" />
+    <link rel="shortcut icon" href="images/net-coder-logo icon.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Blog Grid Styling */
+        .blogs {
+            padding: 4rem 0;
+            min-height: 60vh; /* Ensures footer stays down if few blogs */
+        }
+        
+        .blog-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .blog-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            border:none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 102, 0, 0.15);
+        }
+        
+        .blog-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .blog-card h5 {
+            margin: 0 0 1rem 0;
+            font-size: 1.2rem;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+        
+        .blog-card h5 a {
+            color: #222;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .blog-card h5 a:hover {
+            color: #ff6600;
+        }
+        
+        .blog-card small {
+            display: inline-block;
+            background: rgba(255, 102, 0, 0.1);
+            color: #ff6600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .blog-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: auto; /* Pushes meta to bottom */
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+         .blog-excerpt {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .admin-link {
+            text-align: center;
+            margin-top: 20px;
+            display:none;
+        }
+        .admin-link a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        .admin-link a:hover { color: #ff6600; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-data">
+                <a href="index.html" class="nav-logo">
+                    <img src="images/logo.png" alt="Netcoder Technology Logo">
+                </a>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <svg class="nav-toggle-menu" width="100%" height="100%"
+                        viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12H21M3 6H21M9 18H21"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <svg class="nav-toggle-close" width="100%" height="100%"
+                        viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list container">
+                    <li>
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+
+                    <li class="dropdown-item">
+                        <div class="nav-link dropdown-button">
+                            Courses <svg class="dropdown-arrow" width="10"
+                                height="6" viewBox="0 0 10 6" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5 5.39565C4.88131 5.39565 4.78239 5.35608 4.68348 5.27695L0.133531 0.806133C-0.0445104 0.628091 -0.0445104 0.351138 0.133531 0.173096C0.311573 -0.00494545 0.588526 -0.00494545 0.766568 0.173096L5 4.30762L9.23343 0.133531C9.41147 -0.0445104 9.68843 -0.0445104 9.86647 0.133531C10.0445 0.311573 10.0445 0.588526 9.86647 0.766568L5.31652 5.23739C5.21761 5.3363 5.11869 5.39565 5 5.39565Z"
+                                    fill="#222222" />
+                            </svg>
+
+                        </div>
+                        <div class="dropdown-container container">
+                            <div class="dropdown-content">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <h5>Design & Multimedia
+                                                Courses</h5>
+                                        </li>
+                                        <li><a
+                                                href="foundation-graphic.html">Graphic
+                                                Designing</a></li>
+                                        <li><a href="web-designing.html">Web
+                                                Designing</a></li>
+                                        <li><a href="ui&ux.html">UI & UX
+                                                Design</a></li>
+                                        <li><a href="animation.html">2D/3D
+                                                Animation</a></li>
+                                        <li><a
+                                                href="motion-graphics.html">Motion
+                                                Graphics</a></li>
+                                        <li><a
+                                                href="graphic-and-web-designing.html">Graphics
+                                                & Web
+                                                Designing</a></li>
+                                        <li><a
+                                                href="digital-content-creator.html">digital
+                                                Content Creator</a>
+                                        </li>
+                                        <li><a href="autocad.html">Auto
+                                                CAD</a></li>
+                                    </ul>
+                                    </div>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <h5>CMS & Web Technologies
+                                                Courses</h5>
+                                        </li>
+                                        <li><a
+                                                href="web-development.html">Web
+                                                Development</a></li>
+                                        <li><a
+                                                href="fullstack-web-development.html">Full
+                                                Stack Development</a>
+                                        </li>
+                                        <li><a href="mern-stack.html">MERN
+                                                Stack</a></li>
+                                        <li><a href="mean-stack.html">MEAN
+                                                Stack</a></li>
+                                        <li><a href="php-training.html">PHP
+                                                Training</a></li>
+                                        <li><a
+                                                href="wordpress.html">Wordpress</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <h5>Digital Marketing
+                                                Courses</h5>
+                                        </li>
+                                        <li><a
+                                                href="digital-marketing.html">Digital
+                                                Marketing</a></li>
+                                        <li><a
+                                                href="social-media-marketing.html">Social
+                                                Media Marketing</a>
+                                        </li>
+                                        <li><a href="seo-course.html">SEO
+                                                Course</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <h5>Professional Training
+                                                Courses</h5>
+                                        </li>
+                                        <li><a
+                                                href="business-analytics.html">Data
+                                                Science & Business
+                                                Analytics</a></li>
+                                        <li><a
+                                                href="machine-learning.html">Data
+                                                Science & Machine
+                                                Learning</a>
+                                        </li>
+                                        <li><a
+                                                href="cyber-security.html">Complete
+                                                Cyber Security Course</a>
+                                        </li>
+                                        <li><a
+                                                href="ethical-hacking.html">Ethical
+                                                Hacking</a></li>
+                                        <li><a
+                                                href="software-engineering.html">Software
+                                                engineering with
+                                                Python</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <h5>Additional Courses</h5>
+                                        </li>
+                                        <li><a
+                                                href="system-design.html">System
+                                                Design & Operating
+                                                Systems</a>
+                                        </li>
+                                        <li><a
+                                                href="data-structures.html">Algorithm
+                                                & Data Structures in
+                                                Python</a></li>
+                                    </ul>
+                                    </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="services.html"
+                            class="nav-link">Services</a>
+                    </li>
+                    <li>
+                        <a href="gallery.html" class="nav-link">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="blog.php" class="nav-link active">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="career.html" class="nav-link">Career</a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="nav-link">contact</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="page-title">
+            <div>BLOGS</div>
+            <p>HOME / <b>BLOGS</b></p>
+        </div>
+    </section>
+
+    <div class="blogs container">
+        <?php if (count($blogs) > 0): ?>
+            <div class="blog-col">
+                <?php foreach ($blogs as $blog): ?>
+                <div class="blog-card">
+                    <a href="blog-details.php?slug=<?php echo $blog['slug']; ?>">
+                        <?php if (!empty($blog['main_image'])): ?>
+                            <img src="<?php echo htmlspecialchars($blog['main_image']); ?>" alt="<?php echo htmlspecialchars($blog['title']); ?>">
+                        <?php else: ?>
+                            <div style="height:220px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; color:#999;">
+                                <img src="images/default-blog.jpg" alt="Default Blog" style="object-fit:cover; height:100%;">
+                            </div>
+                        <?php endif; ?>
+                    </a>
+                    
+                    <div class="blog-card-content">
+                        <div style="margin-bottom: 10px;">
+                            <?php 
+                            if(!empty($blog['tags'])) {
+                                $tags = explode(',', $blog['tags']);
+                                foreach ($tags as $tag):
+                                    if (trim($tag)):
+                            ?>
+                                    <small>#<?php echo trim($tag); ?></small>
+                            <?php 
+                                    endif;
+                                endforeach; 
+                            }
+                            ?>
+                        </div>
+
+                        <h5>
+                            <a href="blog-details.php?slug=<?php echo $blog['slug']; ?>">
+                                <?php echo htmlspecialchars($blog['title']); ?>
+                            </a>
+                        </h5>
+                        
+                        <?php if (!empty($blog['excerpt'])): ?>
+                            <p class="blog-excerpt">
+                                <?php echo htmlspecialchars(substr($blog['excerpt'], 0, 120)); ?>...
+                            </p>
+                        <?php endif; ?>
+                        
+                        <div class="blog-meta">
+                            By <?php echo htmlspecialchars($blog['author']); ?> | 
+                            <?php echo date('M d, Y', strtotime($blog['date_posted'])); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div style="text-align: center; padding: 4rem; color: #888;">
+                <h3>No blog posts found.</h3>
+                <p>Check back later for updates!</p>
+            </div>
+        <?php endif; ?>
+        
+        <!-- 
+         -->
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="newsletter">
+                <h2><span>Keep Up With Our Latest Updates</span></h2>
+                <p>Stay connected with our latest news and updates. Be the
+                    first to know about new courses,
+                    exclusive
+                    offers, and exciting announcements by subscribing to our
+                    newsletter.</p>
+                <form action="#">
+                    <input type="email" name="newsletter" id="newsletter"
+                        placeholder="Email Address">
+                    <input type="submit" value="Subscribe">
+                </form>
+            </div>
+            <div class="foot-links">
+                <ul>
+                    <li>
+                        <h5>Quick Links</h5>
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy-policy.html">Privacy &
+                            Policy</a></li>
+                </ul>
+                <ul>
+                    <li>
+                        <h5>Top Courses</h5>
+                    </li>
+                    <li><a href="fullstack-web-development.html">Full Stack
+                            Development</a></li>
+                    <li><a href="graphic-and-web-designing.html">Graphics &
+                            Web Designing</a></li>
+                    <li><a href="mern-stack.html">MERN Stack</a></li>
+                    <li><a href="mean-stack.html">MEAN Stack</a></li>
+                    <li><a href="software-engineering.html">Python
+                            Course</a></li>
+                </ul>
+                <ul>
+                    <li>
+                        <h5>Features</h5>
+                    </li>
+                    <li><a href="foundation-graphic.html">Graphic
+                            Designing</a></li>
+                    <li><a href="animation.html">Animation</a></li>
+                    <li><a href="ui&ux.html">UI & UX Design</a></li>
+                    <li><a href="digital-marketing.html">Digital
+                            Marketing</a></li>
+                    <li><a href="digital-content-creator.html">Content
+                            Creation</a></li>
+                </ul>
+                <ul>
+                    <li>
+                        <h5>Professional Training</h5>
+                    </li>
+                    <li><a href="machine-learning.html">Data Science &
+                            Machine Learning</a></li>
+                    <li><a href="business-analytics.html">Data Science &
+                            Business Analytics</a></li>
+                    <li><a href="system-design.html">System Design &
+                            Operating System</a></li>
+                    <li><a href="cyber-security.html">Cyber
+                            Security</a></li>
+                    <li><a href="ethical-hacking.html">Ethical
+                            Hacking</a></li>
+                </ul>
+                </div>
+            </div>
+        <div class="copyright">
+            <div class="container">
+                <p>Copyright &copy;2025 All rights reserved by &hearts; <a
+                        href="index.html">Netcoder Technology</a></p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/netcodertechnology/">
+                        <svg width="20" height="20" viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M36.2008 63.8002H28.4008C26.4008 63.8002 24.8008 62.1002 24.8008 60.0002V36.2002H18.4008C16.4008 36.2002 14.8008 34.5002 14.8008 32.4002V25.5002C14.8008 23.4002 16.4008 21.7002 18.4008 21.7002H24.6008V15.4002C24.6008 6.30019 30.0008 0.200195 38.0008 0.200195H44.0008C46.0008 0.200195 47.6008 1.9002 47.6008 4.0002V12.1002C47.6008 14.2002 46.0008 15.9002 44.0008 15.9002H39.9008C39.8008 15.9002 39.8008 15.9002 39.7008 15.9002C39.7008 16.0002 39.7008 16.1002 39.7008 16.2002V21.6002H45.4008C46.6008 21.7002 47.6008 22.2002 48.3008 23.0002C49.0008 23.9002 49.3008 25.1002 49.1008 26.2002L47.9008 33.0002C47.7008 34.8002 46.2008 36.1002 44.3008 36.1002H39.7008V60.0002C39.7008 62.0002 38.1008 63.8002 36.2008 63.8002ZM26.5008 32.7002C27.5008 32.7002 28.3008 33.5002 28.3008 34.5002V60.0002C28.3008 60.2002 28.4008 60.3002 28.4008 60.3002H36.2008C36.2008 60.3002 36.3008 60.2002 36.3008 60.0002V34.3002C36.3008 33.3002 37.1008 32.5002 38.1008 32.5002H44.4008C44.4008 32.5002 44.5008 32.5002 44.5008 32.4002V32.3002L45.7008 25.6002C45.7008 25.4002 45.7008 25.3002 45.6008 25.2002C45.6008 25.2002 45.5008 25.1002 45.4008 25.1002H38.0008C37.0008 25.1002 36.2008 24.3002 36.2008 23.3002V16.2002C36.2008 14.4002 36.5008 12.4002 39.9008 12.4002H44.0008C44.0008 12.4002 44.1008 12.3002 44.1008 12.1002V4.1002C44.1008 3.9002 44.0008 3.8002 44.0008 3.8002H38.1008C32.1008 3.8002 28.2008 8.4002 28.2008 15.5002V23.6002C28.2008 24.6002 27.4008 25.4002 26.4008 25.4002H18.4008C18.4008 25.4002 18.3008 25.5002 18.3008 25.7002V32.6002C18.3008 32.8002 18.4008 32.9002 18.4008 32.9002L26.5008 32.7002Z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/netcodertechnology/">
+                        <svg width="20" height="20" viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M32.0016 17.5996C24.1016 17.5996 17.6016 23.9996 17.6016 31.9996C17.6016 39.8996 24.0016 46.3996 32.0016 46.3996C39.9016 46.3996 46.3016 39.9996 46.3016 31.9996C46.3016 24.0996 39.9016 17.5996 32.0016 17.5996ZM32.0016 41.8996C26.6016 41.8996 22.1016 37.4996 22.1016 31.9996C22.1016 26.5996 26.5016 22.0996 32.0016 22.0996C37.4016 22.0996 41.8016 26.4996 41.8016 31.9996C41.8016 37.3996 37.4016 41.8996 32.0016 41.8996Z" />
+                            <path
+                                d="M47 11.5996C45 11.5996 43.5 13.1996 43.5 15.0996C43.5 16.9996 45.1 18.5996 47 18.5996C48.9 18.5996 50.5 16.9996 50.5 15.0996C50.5 13.1996 49 11.5996 47 11.5996Z" />
+                            <path
+                                d="M46.9008 1.7998H17.1008C8.60078 1.7998 1.80078 8.5998 1.80078 17.0998V46.9998C1.80078 55.3998 8.70078 62.2998 17.1008 62.2998H47.0008C55.4008 62.2998 62.3008 55.3998 62.3008 46.9998V17.0998C62.3008 8.5998 55.4008 1.7998 46.9008 1.7998ZM57.8008 46.8998C57.8008 52.8998 53.0008 57.6998 47.0008 57.6998H17.1008C11.1008 57.6998 6.30078 52.8998 6.30078 46.8998V17.0998C6.30078 11.0998 11.2008 6.2998 17.1008 6.2998H46.9008C52.9008 6.2998 57.7008 11.1998 57.7008 17.0998V46.8998H57.8008Z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@netcodertechnology">
+                        <svg width="22" height="16" viewBox="0 0 22 16"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1 8.14286C1 6.73619 1.06762 5.40952 1.15619 4.29714C1.28952 2.61714 2.62095 1.32571 4.3019 1.20857C5.91714 1.09524 8.12381 1 11 1C13.8762 1 16.0829 1.09524 17.6981 1.20857C19.379 1.32571 20.7105 2.6181 20.8438 4.29714C20.9324 5.41048 21 6.73524 21 8.14286C21 9.6 20.9276 10.9705 20.8343 12.1076C20.7772 12.8843 20.4401 13.6139 19.8854 14.1606C19.3308 14.7074 18.5965 15.0341 17.819 15.08C16.1876 15.1914 13.9048 15.2857 11 15.2857C8.09524 15.2857 5.81238 15.1914 4.18095 15.08C3.40351 15.0341 2.66919 14.7074 2.11457 14.1606C1.55994 13.6139 1.22276 12.8843 1.16571 12.1076C1.05716 10.7888 1.00188 9.46614 1 8.14286Z"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M9.0957 10.9994V5.28516L14.3338 8.1423L9.0957 10.9994Z"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="main.js"></script>
+</body>
+</html>

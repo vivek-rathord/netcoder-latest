@@ -1,0 +1,429 @@
+          .contact-form-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+/* Add this to your existing CSS */
+.otp-btn-verify {
+    display: none; /* Hidden by default */
+    margin-top: 10px;
+}
+
+.otp-btn {
+    display: block; /* Visible by default */
+    margin-top: 10px;
+}
+
+.form-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.otp-inputs {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.otp-input {
+    width: 45px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.otp-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.otp-input:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+        /* Form Slides Container */
+        .form-slides {
+            position: relative;
+            min-height: 450px;
+        }
+
+        .form-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(30px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 10px;
+        }
+
+        .form-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            position: relative;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff5532;
+            box-shadow: 0 0 0 3px rgba(255, 85, 50, 0.1);
+        }
+
+        .form-input.error {
+            border-color: #ff3333;
+            background-color: #fff5f5;
+        }
+
+        .error-message {
+            color: #ff3333;
+            font-size: 13px;
+            margin-top: 5px;
+            min-height: 18px;
+        }
+
+        /* Button Styling */
+        .form-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #FF4E4E, #FB8454);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .form-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 85, 50, 0.3);
+        }
+
+        .form-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #666;
+            margin-right: 10px;
+        }
+
+        /* Select Styling */
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: white;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8.25L1.5 3.75h9L6 8.25z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        /* OTP Styling */
+        .otp-container {
+            text-align: center;
+        }
+
+        .otp-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .otp-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .otp-input:focus {
+            border-color: #ff5532;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 85, 50, 0.1);
+        }
+
+        .otp-input.filled {
+            border-color: #ff5532;
+            background-color: #fff5f3;
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message h4 {
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .success-message .countdown {
+            color: #ff5532;
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* Progress Indicators */
+        .progress-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #ff5532;
+            transform: scale(1.2);
+        }
+
+        /* Service Options */
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .service-option {
+            text-align: center;
+        }
+
+        .service-btn {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .service-btn:hover {
+            border-color: #ff5532;
+            background-color: #fff5f3;
+        }
+
+        .service-btn.selected {
+            background-color: #ff5532;
+            color: white;
+            border-color: #ff5532;
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #ff5532;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-form-container {
+                padding: 20px;
+                margin: 20px 15px;
+            }
+
+            .form-slide {
+                padding: 5px;
+            }
+
+            .otp-input {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .form-btn {
+                margin: 5px 0;
+            }
+
+            .form-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form-container {
+                padding: 15px;
+            }
+
+            .form-input,
+            .form-select {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .otp-input {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+        }
+
+        /* Captcha Container */
+        #recaptcha-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            max-width: 300px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .toast.success {
+            background: #27ae60;
+        }
+
+        .toast.error {
+            background: #ff3333;
+        }
+
+        .toast.warning {
+            background: #f39c12;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Validation States */
+        .validation-success {
+            color: #27ae60;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .form-input.success {
+            border-color: #27ae60;
+            background-color: #f8fff9;
+        }
+
+        /* Header */
+        h3.slide-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+ 
