@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Courier New', monospace;
+}
+
+body {
+  background: #0f172a;
+  color: #fff;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  overflow: hidden;
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,115,0,0.1), transparent);
+  z-index: 0;
+}
+
+/* LEFT CONTENT */
+.hero-content {
+  z-index: 2;
+  max-width: 500px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #ff6a00;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #94a3b8;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  background: linear-gradient(45deg, #ff6a00, #ff9a00);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* RIGHT CODE AREA */
+.code-container {
+  width: 50%;
+  height: 80%;
+  background: #020617;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(255,115,0,0.2);
+  z-index: 2;
+}
+
+/* CODE TEXT */
+#code {
+  color: #38bdf8;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  animation: scrollCode 10s linear infinite;
+}
+
+/* SCROLL ANIMATION */
+@keyframes scrollCode {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .code-container {
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+  </style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code Hero</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>Build. Code. Create.</h1>
+    <p id="typing"></p>
+    <button>Get Started</button>
+  </div>
+
+  <div class="code-container">
+    <pre id="code"></pre>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
+  <script>
+    // TYPING EFFECT
+const text = "We build modern websites & apps.";
+let index = 0;
+
+function typeEffect() {
+  if (index < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, 50);
+  }
+}
+
+typeEffect();
+
+
+// FLOWING CODE CONTENT
+const codeLines = `
+function createWebsite() {
+  let skills = ["HTML", "CSS", "JavaScript"];
+
+  skills.forEach(skill => {
+    console.log("Using " + skill);
+  });
+
+  return "Modern Website Ready 🚀";
+}
+
+const app = createWebsite();
+
+if(app) {
+  console.log("Deployment Successful!");
+}
+
+for(let i = 0; i < 10; i++) {
+  console.log("Coding... " + i);
+}
+`;
+
+document.getElementById("code").innerText = codeLines;
+  </script>
+</body>
+</html>

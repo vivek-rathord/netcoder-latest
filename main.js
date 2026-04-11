@@ -1,3 +1,4 @@
+
 /*=============== SHOW MENU ===============*/
 const showMenu = (toggleId, navId) => {
     const toggle = document.getElementById(toggleId),
@@ -1021,3 +1022,50 @@ item.addEventListener("mouseenter",activateTab); // desktop hover
 item.addEventListener("click",activateTab); // mobile tap
 
 });
+
+
+
+// timeline Of online courses
+
+        const items = document.querySelectorAll(".timeline-item");
+        const progress = document.querySelector(".timeline-progress");
+        const timeline = document.querySelector(".timeline");
+
+        let ticking = false;
+
+        function updateTimeline() {
+            const timelineTop = timeline.offsetTop;
+            const scrollY = window.scrollY + window.innerHeight * 0.7;
+
+            let progressHeight = 0;
+
+            items.forEach((item, index) => {
+                const itemTop = item.offsetTop + timelineTop;
+
+                // RESET ALL (for reverse animation)
+                item.classList.remove("active", "completed");
+
+                if (scrollY > itemTop) {
+                    item.classList.add("active");
+
+                    // previous items = completed
+                    for (let i = 0; i < index; i++) {
+                        items[i].classList.add("completed");
+                    }
+
+                    // smooth line fill
+                    progressHeight = item.offsetTop + 50;
+                }
+            });
+
+            progress.style.height = progressHeight + "px";
+
+            ticking = false;
+        }
+
+        window.addEventListener("scroll", () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateTimeline);
+                ticking = true;
+            }
+        });
