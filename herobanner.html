@@ -1,184 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-  <style>
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Courier New', monospace;
-}
-
-body {
-  background: #0f172a;
-  color: #fff;
-}
-
-/* HERO */
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10%;
-  overflow: hidden;
-}
-
-/* DARK OVERLAY */
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255,115,0,0.1), transparent);
-  z-index: 0;
-}
-
-/* LEFT CONTENT */
-.hero-content {
-  z-index: 2;
-  max-width: 500px;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  color: #ff6a00;
-}
-
-.hero p {
-  margin: 20px 0;
-  font-size: 1.2rem;
-  color: #94a3b8;
-}
-
-button {
-  padding: 12px 25px;
-  border: none;
-  background: linear-gradient(45deg, #ff6a00, #ff9a00);
-  color: #fff;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  transform: scale(1.1);
-}
-
-/* RIGHT CODE AREA */
-.code-container {
-  width: 50%;
-  height: 80%;
-  background: #020617;
-  border-radius: 10px;
-  padding: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 30px rgba(255,115,0,0.2);
-  z-index: 2;
-}
-
-/* CODE TEXT */
-#code {
-  color: #38bdf8;
-  font-size: 14px;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  animation: scrollCode 10s linear infinite;
-}
-
-/* SCROLL ANIMATION */
-@keyframes scrollCode {
-  0% { transform: translateY(100%); }
-  100% { transform: translateY(-100%); }
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .code-container {
-    width: 100%;
-    margin-top: 30px;
-  }
-}
-  </style>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netcoder Gallery</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:#fff;
+}
+
+/* Title */
+.title{
+    text-align:center;
+    margin:60px 0;
+}
+.title span{
+    color:#ff5532;
+}
+
+/* Card */
+.gallery-card{
+    position:relative;
+    height:260px;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+}
+
+/* Image */
+.gallery-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.6s;
+}
+
+/* Overlay */
+.card-overlay{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    display:flex;
+    align-items:flex-end;
+    padding:20px;
+    opacity:0;
+    transition:0.5s;
+}
+
+/* Text */
+.card-overlay h5{
+    transform:translateY(30px);
+    transition:0.5s;
+}
+
+/* Hover Effects */
+.gallery-card:hover img{
+    transform:scale(1.15) rotate(2deg);
+    filter:brightness(0.7);
+}
+
+.gallery-card:hover .card-overlay{
+    opacity:1;
+}
+
+.gallery-card:hover .card-overlay h5{
+    transform:translateY(0);
+}
+
+/* Glow Border */
+.gallery-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:20px;
+    border:2px solid transparent;
+    transition:0.4s;
+}
+
+.gallery-card:hover::before{
+    border:2px solid #ff5532;
+    box-shadow:0 0 25px #ff5532;
+}
+
+/* Spacing */
+.row{
+    row-gap:25px;
+}
+</style>
 </head>
+
 <body>
 
+<div class="container">
 
+    <!-- Title -->
+    <div class="title">
+        <h1>Our <span>Gallery</span></h1>
+        <p>Creative moments at Netcoder</p>
+    </div>
 
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Code Hero</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <!-- Gallery -->
+    <div class="row">
 
-<section class="hero">
-  <div class="overlay"></div>
+        <div class="col-md-4 col-sm-6">
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+                <div class="card-overlay">
+                    <h5>Modern Classroom</h5>
+                </div>
+            </div>
+        </div>
 
-  <div class="hero-content">
-    <h1>Build. Code. Create.</h1>
-    <p id="typing"></p>
-    <button>Get Started</button>
-  </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978">
+                <div class="card-overlay">
+                    <h5>Our Team</h5>
+                </div>
+            </div>
+        </div>
 
-  <div class="code-container">
-    <pre id="code"></pre>
-  </div>
-</section>
+        <div class="col-md-4 col-sm-6">
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865">
+                <div class="card-overlay">
+                    <h5>Events & Workshops</h5>
+                </div>
+            </div>
+        </div>
 
-<script src="script.js"></script>
-</body>
-</html>
-  <script>
-    // TYPING EFFECT
-const text = "We build modern websites & apps.";
-let index = 0;
+        <div class="col-md-4 col-sm-6">
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c">
+                <div class="card-overlay">
+                    <h5>Student Projects</h5>
+                </div>
+            </div>
+        </div>
 
-function typeEffect() {
-  if (index < text.length) {
-    document.getElementById("typing").innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeEffect, 50);
-  }
-}
+        <div class="col-md-4 col-sm-6">
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
+                <div class="card-overlay">
+                    <h5>Learning Environment</h5>
+                </div>
+            </div>
+        </div>
 
-typeEffect();
+        <div class="col-md-4 col-sm-6">
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998">
+                <div class="card-overlay">
+                    <h5>Practical Sessions</h5>
+                </div>
+            </div>
+        </div>
 
+    </div>
 
-// FLOWING CODE CONTENT
-const codeLines = `
-function createWebsite() {
-  let skills = ["HTML", "CSS", "JavaScript"];
+</div>
 
-  skills.forEach(skill => {
-    console.log("Using " + skill);
-  });
-
-  return "Modern Website Ready 🚀";
-}
-
-const app = createWebsite();
-
-if(app) {
-  console.log("Deployment Successful!");
-}
-
-for(let i = 0; i < 10; i++) {
-  console.log("Coding... " + i);
-}
-`;
-
-document.getElementById("code").innerText = codeLines;
-  </script>
 </body>
 </html>

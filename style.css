@@ -45,7 +45,7 @@ body {
     font-size: var(--normal-font-size);
     color: var(--text-color);
     font-family: poppins;
-    background-color: rgb(228, 227, 231);
+    background-color: rgba(237, 233, 233, 0.811);
 
 }
 
@@ -223,7 +223,8 @@ input:focus {
     width: 100%;
     box-shadow: var(--shadow);
     background-color: #f7f7f7;
-    z-index: var(--z-fixed);
+    /* z-index: var(--z-fixed); */
+    z-index: 9999;
 }
 
 /* NAV */
@@ -925,6 +926,7 @@ input:focus {
 }
 
 .blogs .blog-col .blog-card {
+    background-color: var(--body-color);
     padding: 20px;
     box-shadow: var(--shadow);
     flex-basis: 250px;
@@ -1058,6 +1060,8 @@ main.container {
     color: var(--first-color);
     font-weight: 500;
 }
+
+
 
 /* footer */
 footer {
@@ -4908,10 +4912,10 @@ GENERAL SECTION STYLING
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
     position: relative;
     padding: 16px 32px;
+    background-color: var(--body-color);
 }
 
 .milestone-header {
-
     position: relative;
     cursor: pointer;
 }
@@ -5259,6 +5263,26 @@ GENERAL SECTION STYLING
     }
 }
 
+@media (max-width: 480px) {
+
+    .timeline-item {
+        flex-direction: column;
+        padding-left: 5px;
+    }
+
+    .timeline-line {
+        left: 8px;
+    }
+
+    .circle {
+        margin-bottom: 10px;
+    }
+
+    .timeline-card {
+        width: 100%;
+    }
+}
+
 
 /* new hero */
 .hero-section-custom {
@@ -5341,6 +5365,7 @@ GENERAL SECTION STYLING
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     animation: float 5s infinite ease-in-out;
     white-space: nowrap;
+      z-index: 10;
 }
 
 /* POSITIONS */
@@ -5430,3 +5455,10 @@ GENERAL SECTION STYLING
 }
 
 /* end */
+
+.mentorship-header{
+    text-align: center;
+}
+.mentorship-grid button{
+    cursor: pointer;
+}
